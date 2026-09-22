@@ -286,7 +286,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 0.5rem;
     }
 
     .btn-primary {
@@ -328,81 +328,6 @@
     .btn-secondary:hover {
       background: var(--bg-surface);
       border-color: var(--border-focus);
-    }
-
-    /* BARRA PARA INSERTAR URL (ESPACIO DISPONIBLE) */
-    .url-connector-bar {
-      max-width: 860px;
-      margin: 0 auto 2.5rem;
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 0.85rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      box-shadow: var(--shadow-card);
-    }
-
-    @media (min-width: 680px) {
-      .url-connector-bar {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-    }
-
-    .url-label-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .url-input-field-wrap {
-      display: flex;
-      gap: 0.5rem;
-      flex: 1;
-      width: 100%;
-    }
-
-    .url-input {
-      flex: 1;
-      background: var(--bg-main);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      padding: 0.55rem 0.85rem;
-      font-size: 0.82rem;
-      color: var(--text-main);
-      outline: none;
-      transition: var(--transition);
-    }
-
-    .url-input:focus {
-      border-color: var(--primary);
-      background: #ffffff;
-    }
-
-    .btn-connect-url {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
-      padding: 0.55rem 0.95rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-
-    .btn-connect-url:hover {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
     }
 
     /* CONTROLES Y BUSCADOR DEL CATÁLOGO */
@@ -1034,9 +959,9 @@
       </ul>
 
       <div class="nav-actions">
-        <!-- WhatsApp con número directo +5492984926445 -->
+        <!-- WhatsApp con enlace directo -->
         <a href="https://wa.me/5492984926445?text=Hola%20Eliana,%20quiero%20consultar%20por%20tus%20servicios%20de%20marketing%20digital." target="_blank" rel="noopener noreferrer" class="btn-wsp-nav">
-          💬 WHATSAPP
+          💬 WhatsApp
         </a>
 
         <button class="btn-cotizador" onclick="toggleDrawer(true)">
@@ -1068,22 +993,8 @@
       </a>
       <!-- Enlace directo con número de WhatsApp -->
       <a href="https://wa.me/5492984926445?text=Hola%20Eliana,%20quiero%20hacerte%20una%20consulta%20sobre%20tus%20servicios." target="_blank" rel="noopener noreferrer" class="btn-secondary">
-        💬 Contactar a WhatsApp
+        💬 Contactar por WhatsApp
       </a>
-    </div>
-
-    <!-- ESPACIO DISPUESTO PARA AÑADIR LA URL DE GOOGLE APPS SCRIPT -->
-      <div class="url-input-field-wrap">
-        <input 
-          type="url" 
-          id="input-url-script" 
-          class="url-input" 
-          placeholder="https://script.google.com/macros/s/AKfycbzp7Ezfd_FbUf-8zCMXDmdM_lY3FYwDhSpO7FBx630UsLfCepTI52dyrE-nddkjv86l/exec"
-        >
-        <button class="btn-connect-url" onclick="conectarUrlPersonalizada()">
-          Cargar URL
-        </button>
-      </div>
     </div>
   </section>
 
@@ -1131,9 +1042,9 @@
       <p style="color: var(--text-muted); max-width: 600px; font-size: 0.95rem;">
         Hablemos directamente por WhatsApp sobre las necesidades de tu marca y definamos juntos la mejor propuesta de valor.
       </p>
-      <!-- Botón con el número de WhatsApp +5492984926445 -->
+      <!-- Botón con enlace a WhatsApp -->
       <a href="https://wa.me/5492984926445?text=Hola%20Eliana,%20quiero%20solicitar%20un%20asesoramiento%20de%20marketing%20digital." target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: var(--accent-wsp); font-weight: 800;">
-        💬 Enviar mensaje al +54 9 298 492-6445
+        💬 Enviar mensaje por WhatsApp
       </a>
     </div>
   </section>
@@ -1259,7 +1170,6 @@
 
     <div class="footer-bottom">
       <p>© 2026 Catálogo de Servicios • Diseñado y desarrollado por <span class="author-signature-highlight">Eliana Roldán</span>.</p>
-      <p>WhatsApp: +54 9 298 492-6445</p>
     </div>
   </footer>
 
@@ -1272,9 +1182,8 @@
 
     // ==========================================================================
     // ESPACIO PARA AÑADIR LA URL DE GOOGLE APPS SCRIPT:
-    // (Puedes colocar aquí tu URL o pegarla directamente en el campo superior de la página)
     // ==========================================================================
-    const URL_APPS_SCRIPT_CONFIGURADA = ""; 
+    const URL_APPS_SCRIPT_CONFIGURADA = "https://script.google.com/macros/s/AKfycbzp7Ezfd_FbUf-8zCMXDmdM_lY3FYwDhSpO7FBx630UsLfCepTI52dyrE-nddkjv86l/exec"; 
 
     // SERVICIOS BASE DE MARKETING DIGITAL (CON IMÁGENES DE PEXELS)
     const SERVICIOS_DEFAULT = [
@@ -1583,55 +1492,214 @@
       document.getElementById('modal-detalle').classList.remove('active');
     }
 
-    // CONECTAR URL PERSONALIZADA (ESPACIO DISPONIBLE)
-    async function conectarUrlPersonalizada() {
+    // FUNCIONES DE FORMATEO Y RESOLUCIÓN PARA APPS SCRIPT
+    function formatearUrlImagen(url) {
+      if (!url || typeof url !== 'string') {
+        return 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800';
+      }
+      url = url.trim();
+      // Si ya es un enlace directo de Pexels CDN o archivo de imagen:
+      if (url.includes('images.pexels.com') || /\.(jpe?g|png|webp|avif)/i.test(url)) {
+        return url;
+      }
+      // Si es un enlace de página de Pexels, extraer el ID numérico (ej: -270488/ o /270488/)
+      const match = url.match(/[-/](\d+)\/?$/);
+      if (match && match[1]) {
+        const photoId = match[1];
+        return `https://images.pexels.com/photos/${photoId}/pexels-photo-${photoId}.jpeg?auto=compress&cs=tinysrgb&w=800`;
+      }
+      return url;
+    }
+
+    function formatearNombreServicio(nombre) {
+      if (!nombre) return 'Servicio Digital';
+      nombre = nombre.trim();
+      if (nombre.toUpperCase() === 'SEO') return 'Posicionamiento SEO';
+      // Capitalizar formato limpio
+      return nombre.toLowerCase().split(' ').map(palabra => {
+        if (palabra.toUpperCase() === 'SEO') return 'SEO';
+        return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+      }).join(' ');
+    }
+
+    const SERVICIOS_INFO_BASE = {
+      "diseño web": {
+        categoria: "Desarrollo",
+        descripcion: "Diseño y desarrollo de sitios web modernos, veloces y 100% responsive, optimizados para convertir visitantes en clientes potenciales.",
+        entregables: [
+          "Diseño 100% responsive para celulares, tablets y PC",
+          "Optimización de velocidad y buenas prácticas SEO",
+          "Botones flotantes de WhatsApp y formularios de contacto",
+          "Panel autoadministrable fácil de gestionar"
+        ]
+      },
+      "gestion de redes": {
+        categoria: "Social Media",
+        descripcion: "Planificación de contenidos, diseño gráfico de publicaciones y administración profesional de Instagram, Facebook y LinkedIn.",
+        entregables: [
+          "Calendario mensual con 12 a 16 piezas (Reels y posts)",
+          "Diseño gráfico profesional adaptado a tu identidad",
+          "Copywriting persuasivo enfocado en interacción y venta",
+          "Informe mensual de métricas y crecimiento"
+        ]
+      },
+      "publicidad digital": {
+        categoria: "Pauta",
+        descripcion: "Campañas de anuncios de alto rendimiento en Meta Ads (Facebook e Instagram) y Google Ads para captar clientes calificados.",
+        entregables: [
+          "Configuración técnica de Pixel y API de Conversiones",
+          "Segmentación avanzada por intereses y audiencias",
+          "Creación de creatividades publicitarias efectivas",
+          "Optimización continua y reporte de retorno (ROAS)"
+        ]
+      },
+      "seo": {
+        categoria: "Posicionamiento",
+        descripcion: "Posicionamiento orgánico en los primeros resultados de Google. Auditoría técnica, optimización on-page y estrategia de palabras clave.",
+        entregables: [
+          "Auditoría técnica exhaustiva de tu sitio web",
+          "Investigación de palabras clave de alta intención",
+          "Optimización de títulos, meta etiquetas y velocidad",
+          "Estrategia de contenidos para superar competidores"
+        ]
+      },
+      "email marketing": {
+        categoria: "Social Media",
+        descripcion: "Estrategias de fidelización, newsletters comerciales y secuencias automatizadas de correo para nutrir prospectos y elevar recompras.",
+        entregables: [
+          "Diseño de plantillas personalizadas y responsive",
+          "Flujos automatizados de bienvenida y remarketing",
+          "Segmentación avanzada de base de datos",
+          "Reportes de apertura y clics (CTR)"
+        ]
+      },
+      "analitica digital": {
+        categoria: "Posicionamiento",
+        descripcion: "Implementación avanzada de Google Analytics 4 (GA4), Google Tag Manager y tableros interactivos en Looker Studio.",
+        entregables: [
+          "Configuración de eventos y conversiones en Tag Manager",
+          "Dashboard personalizado interactivo en Looker Studio",
+          "Medición precisa de embudos de ventas",
+          "Sesión de interpretación de métricas clave"
+        ]
+      }
+    };
+
+    function resolverInfoServicio(nombreOriginal, descripcionOriginal) {
+      const normalizado = (nombreOriginal || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+      let match = null;
+
+      for (const [clave, datos] of Object.entries(SERVICIOS_INFO_BASE)) {
+        const claveNorm = clave.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        if (normalizado.includes(claveNorm) || claveNorm.includes(normalizado)) {
+          match = datos;
+          break;
+        }
+      }
+
+      const categoria = match ? match.categoria : 'Marketing';
+      const descripcion = (descripcionOriginal && descripcionOriginal.trim().length > 3)
+        ? descripcionOriginal.trim()
+        : (match ? match.descripcion : 'Servicio profesional estratégico orientado al crecimiento y posicionamiento de tu marca.');
+      
+      const entregables = match ? match.entregables : [
+        "Atención y asesoría personalizada",
+        "Garantía de calidad profesional",
+        "Soporte directo vía WhatsApp"
+      ];
+
+      return { categoria, descripcion, entregables };
+    }
+
+    // CONECTAR URL PERSONALIZADA
+    async function conectarUrlPersonalizada(manual = false) {
       const input = document.getElementById('input-url-script');
-      const url = input ? input.value.trim() : '';
+      const url = input && input.value.trim() ? input.value.trim() : URL_APPS_SCRIPT_CONFIGURADA;
+      const statusBadge = document.getElementById('url-status-badge');
+      const statusText = document.getElementById('url-status-text');
 
       if (!url) {
-        alert("Por favor ingresa una URL válida de Google Apps Script.");
+        if (manual) alert("Por favor ingresa una URL válida de Google Apps Script.");
         return;
+      }
+
+      if (statusBadge && statusText) {
+        statusBadge.className = 'url-status-badge loading';
+        statusText.textContent = 'Conectando con Apps Script...';
       }
 
       try {
         const respuesta = await fetch(url);
-        if (!respuesta.ok) throw new Error("Error en la respuesta del servidor");
+        if (!respuesta.ok) throw new Error("Respuesta HTTP no exitosa: " + respuesta.status);
         const datos = await respuesta.json();
 
         if (Array.isArray(datos) && datos.length > 0) {
-          // Adaptar datos recibidos al formato del catálogo
-          serviciosData = datos.map((item, index) => ({
-            id: 'serv-api-' + index,
-            nombre: item.Nombre || item.nombre || 'Servicio',
-            precio: Number(item.Precio || item.precio || 0),
-            descripcion: item.Descripcion || item.descripcion || '',
-            imagen: item.Imagen || item.imagen || 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-            categoria: item.Categoria || item.categoria || 'Marketing',
-            entregables: [
-              "Servicio personalizado según requerimientos",
-              "Soporte directo vía WhatsApp",
-              "Optimización de resultados"
-            ]
-          }));
+          // Mapear datos recibidos del backend Apps Script
+          serviciosData = datos.map((item, index) => {
+            const nombreRaw = item.Nombre || item.nombre || 'Servicio';
+            const descRaw = item.Descripcion || item.descripcion || '';
+            const imgRaw = item.Imagen || item.imagen || '';
+            const precioRaw = Number(item.Precio || item.precio || 0);
 
+            const info = resolverInfoServicio(nombreRaw, descRaw);
+            const imagenDirecta = formatearUrlImagen(imgRaw);
+            const nombreFormateado = formatearNombreServicio(nombreRaw);
+
+            return {
+              id: 'serv-sheet-' + (index + 1),
+              nombre: nombreFormateado,
+              precio: precioRaw,
+              descripcion: info.descripcion,
+              imagen: imagenDirecta,
+              categoria: item.Categoria || item.categoria || info.categoria,
+              entregables: info.entregables
+            };
+          });
+
+          serviciosVisibles = [...serviciosData];
           filtrarServicios();
-          alert("¡Servicios actualizados correctamente desde tu URL!");
+
+          if (statusBadge && statusText) {
+            statusBadge.className = 'url-status-badge';
+            statusText.textContent = `🟢 Sincronizado (${datos.length} servicios de la hoja)`;
+          }
+
+          if (manual) {
+            const toast = document.createElement('div');
+            toast.style.cssText = 'position: fixed; bottom: 24px; right: 24px; background: #166534; color: #fff; padding: 12px 20px; border-radius: 8px; z-index: 9999; box-shadow: 0 4px 14px rgba(0,0,0,0.15); font-weight: 700; font-size: 0.88rem; transition: opacity 0.3s ease;';
+            toast.textContent = `✓ ¡${datos.length} servicios cargados con éxito desde Google Apps Script!`;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+              toast.style.opacity = '0';
+              setTimeout(() => toast.remove(), 400);
+            }, 3000);
+          }
         } else {
-          alert("La URL respondió pero no contiene un listado de servicios válido.");
+          throw new Error("El JSON recibido no contiene un listado de servicios válido.");
         }
       } catch (err) {
-        console.error(err);
-        alert("No se pudo conectar con la URL ingresada. Verifica que esté desplegada como aplicación web pública.");
+        console.warn("Aviso de sincronización con Google Apps Script:", err);
+        if (statusBadge && statusText) {
+          statusBadge.className = 'url-status-badge error';
+          statusText.textContent = 'Modo local (Google Sheets no respondió)';
+        }
+        renderizarGrid(serviciosVisibles);
+        if (manual) {
+          alert("No se pudo conectar con la URL ingresada. Verifica que el Apps Script esté desplegado como 'Cualquier usuario' (público) y que tengas conexión.");
+        }
       }
     }
 
     // INICIALIZACIÓN
     document.addEventListener('DOMContentLoaded', () => {
-      // Si se definió URL fija en el código, cargarla automáticamente
+      // Sincronizar automáticamente con la URL de Apps Script provista
+      const input = document.getElementById('input-url-script');
+      if (input && URL_APPS_SCRIPT_CONFIGURADA) {
+        input.value = URL_APPS_SCRIPT_CONFIGURADA;
+      }
+      
       if (URL_APPS_SCRIPT_CONFIGURADA) {
-        const input = document.getElementById('input-url-script');
-        if (input) input.value = URL_APPS_SCRIPT_CONFIGURADA;
-        conectarUrlPersonalizada();
+        conectarUrlPersonalizada(false);
       } else {
         renderizarGrid(serviciosData);
       }
