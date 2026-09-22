@@ -1,18 +1,20 @@
-<html lang="es"><head>
-  <script type="module" src="/@vite/client"></script>
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Servicios — Marketing Digital</title>
-  <meta name="description" content="Catálogo de servicios">
+  <title>Catálogo de Servicios — Eliana Roldán</title>
+  <meta name="description" content="Catálogo de servicios de marketing digital desarrollado por Eliana Roldán.">
+  <meta property="og:title" content="Catálogo de Servicios — Eliana Roldán">
+  <meta property="og:description" content="Servicios profesionales de marketing digital, diseño web, redes sociales y pauta publicitaria.">
   
-  <!-- Tipografía moderna Google Fonts -->
+  <!-- Tipografía Google Fonts Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* RESET Y VARIABLES */
+    /* VARIABLES DE DISEÑO — PALETA BEIGE ELEGANTE */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -20,48 +22,70 @@
     }
 
     :root {
-      --bg-dark: #090d16;
-      --bg-card: #111827;
-      --bg-card-hover: #172033;
-      --border: #1f293d;
-      --border-accent: #374151;
-      --primary: #4f46e5;
-      --primary-hover: #4338ca;
-      --primary-light: rgba(79, 70, 229, 0.15);
-      --accent-green: #10b981;
-      --accent-green-bg: rgba(16, 185, 129, 0.12);
-      --accent-whatsapp: #25d366;
-      --accent-whatsapp-hover: #20ba5a;
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --text-dim: #6b7280;
-      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      --radius: 18px;
-      --radius-sm: 10px;
-      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+      /* Fondo y superficies Beige */
+      --bg-main: #f6f3ec;        /* Beige cálido suave */
+      --bg-surface: #efeae1;     /* Tono crema / arena */
+      --bg-card: #ffffff;        /* Blanco cálido puro para tarjetas */
+      --bg-card-hover: #fdfbf7;
+      
+      /* Bordes y divisiones sutiles */
+      --border-subtle: #e2dbce;
+      --border-focus: #c5bba9;
+      
+      /* Tipografía y acentos en tonos cálidos profundos */
+      --text-main: #24211d;      /* Ébano / espresso cálido */
+      --text-muted: #665f55;     /* Pardo / gris cálido */
+      --text-dim: #948b7f;       /* Tono arena suave */
+      
+      /* Colores de acción y conversión */
+      --primary: #2d4a3e;        /* Verde bosque profundo muy elegante */
+      --primary-hover: #1f352c;
+      --primary-light: #e8efe9;
+      --primary-glow: rgba(45, 74, 62, 0.18);
+      
+      --accent-warm: #b8621b;     /* Terracota / ámbar cálido */
+      --accent-warm-light: #fbf0e6;
+      
+      --accent-wsp: #1ea952;      /* Verde WhatsApp adaptado */
+      --accent-wsp-hover: #178a42;
+      
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --radius-pill: 9999px;
+      
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-card: 0 4px 18px rgba(50, 40, 30, 0.06), 0 1px 3px rgba(50, 40, 30, 0.04);
+      --shadow-hover: 0 14px 30px rgba(50, 40, 30, 0.1), 0 2px 6px rgba(50, 40, 30, 0.05);
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: var(--font-sans);
-      background-color: var(--bg-dark);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-main);
       color: var(--text-main);
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
-    /* HEADER & NAVEGACIÓN */
+    /* HEADER & BARRA DE NAVEGACIÓN */
     header {
-      background: rgba(17, 24, 39, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 40;
+      z-index: 50;
+      background: rgba(246, 243, 236, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .header-container {
+    .nav-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 1rem 1.5rem;
@@ -71,1009 +95,1548 @@
       gap: 1rem;
     }
 
-    .brand {
+    .brand-link {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-    }
-
-    .brand-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #6366f1, #38bdf8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 800;
-      font-size: 1.2rem;
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-    }
-
-    .brand-title {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #FFC5D3;
-    }
-
-    .brand-badge {
-      display: none;
-      font-size: 0.7rem;
-      font-weight: 600;
-      background: var(--primary-light);
-      color: #a5b4fc;
-      border: 1px solid rgba(99, 102, 241, 0.25);
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-    }
-
-    @media (min-width: 640px) {
-      .brand-badge {
-        display: inline-block;
-      }
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .btn-header {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.55rem 1rem;
-      font-size: 0.825rem;
-      font-weight: 600;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-accent);
-      background: var(--bg-card);
-      color: var(--text-main);
-      cursor: pointer;
-      transition: all 0.2s ease;
+      gap: 0.85rem;
       text-decoration: none;
     }
 
-    .btn-header:hover {
-      background: var(--bg-card-hover);
-      border-color: #4b5563;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent-green);
-      display: inline-block;
-    }
-
-    /* CONTENEDOR PRINCIPAL */
-    main {
-      flex: 1;
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
+    .brand-logo-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--primary) 0%, #446857 100%);
       display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    /* BANNER HERO DE LA ACTIVIDAD */
-    .hero-banner {
-      background: linear-gradient(180deg, #111827 0%, rgba(17, 24, 39, 0.6) 100%);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-banner::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      background: var(--accent-green-bg);
-      color: var(--accent-green);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      width: fit-content;
-    }
-
-    .hero-title {
-      font-size: 2rem;
+      justify-content: center;
+      color: #f7f4ee;
       font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-      color: #fff;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 12px var(--primary-glow);
     }
 
-    .hero-desc {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      max-width: 750px;
-      line-height: 1.6;
-    }
-
-    /* CAJA DE CONEXIÓN APPS SCRIPT */
-    .sync-box {
-      background: var(--bg-dark);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 1rem 1.25rem;
+    .brand-info {
       display: flex;
       flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-warm);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    @media (min-width: 860px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
       gap: 0.75rem;
     }
 
-    .sync-box-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .sync-input-row {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .sync-input {
-      flex: 1;
-      min-width: 250px;
-      background: #0d121f;
-      border: 1px solid var(--border-accent);
-      border-radius: var(--radius-sm);
-      padding: 0.65rem 1rem;
-      font-size: 0.825rem;
-      color: var(--text-main);
-      font-family: monospace;
-      outline: none;
-    }
-
-    .sync-input:focus {
-      border-color: var(--primary);
-    }
-
-    .btn-sync {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 0.65rem 1.25rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.825rem;
+    .btn-wsp-nav {
+      background: var(--accent-wsp);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.55rem 1rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
       font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(30, 169, 82, 0.25);
+    }
+
+    .btn-wsp-nav:hover {
+      background: var(--accent-wsp-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-cotizador {
+      position: relative;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 0.55rem 1.15rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
       cursor: pointer;
+      box-shadow: 0 4px 12px var(--primary-glow);
+      transition: var(--transition);
+    }
+
+    .btn-cotizador:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .cart-badge {
+      background: var(--accent-warm);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 800;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0.2rem;
+    }
+
+    /* SECCIÓN HERO */
+    .hero-section {
+      padding: 3.5rem 1.5rem 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-badge-pill {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      transition: background 0.2s;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--primary);
+      padding: 0.35rem 1.1rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
     }
 
-    .btn-sync:hover {
+    .hero-badge-pill .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-wsp);
+      box-shadow: 0 0 0 3px rgba(30, 169, 82, 0.2);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      color: var(--text-main);
+      max-width: 860px;
+      margin: 0 auto 1.25rem;
+    }
+
+    .hero-title .highlight-text {
+      color: var(--primary);
+      text-decoration: underline;
+      text-decoration-color: var(--border-subtle);
+      text-underline-offset: 6px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 660px;
+      margin: 0 auto 1.75rem;
+      line-height: 1.65;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.92rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
       background: var(--primary-hover);
+      transform: translateY(-2px);
     }
 
-    .sync-note {
-      font-size: 0.75rem;
-      color: var(--text-dim);
+    .btn-secondary {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      text-decoration: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.92rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
-    /* FILTROS Y BÚSQUEDA */
-    .controls-bar {
+    .btn-secondary:hover {
+      background: var(--bg-surface);
+      border-color: var(--border-focus);
+    }
+
+    /* BARRA PARA INSERTAR URL (ESPACIO DISPONIBLE) */
+    .url-connector-bar {
+      max-width: 860px;
+      margin: 0 auto 2.5rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    @media (min-width: 680px) {
+      .url-connector-bar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .url-label-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .url-input-field-wrap {
+      display: flex;
+      gap: 0.5rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    .url-input {
+      flex: 1;
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      color: var(--text-main);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .url-input:focus {
+      border-color: var(--primary);
+      background: #ffffff;
+    }
+
+    .btn-connect-url {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.55rem 0.95rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-connect-url:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* CONTROLES Y BUSCADOR DEL CATÁLOGO */
+    .catalog-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 4rem;
+      width: 100%;
+    }
+
+    .catalog-header {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .section-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .catalog-controls {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
       padding: 1rem 1.25rem;
-      border-radius: var(--radius);
+      border-radius: var(--radius-md);
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-card);
     }
 
     @media (min-width: 768px) {
-      .controls-bar {
+      .catalog-controls {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
       }
     }
 
+    .search-wrapper {
+      position: relative;
+      flex: 1;
+      max-width: 360px;
+    }
+
     .search-input {
-      background: var(--bg-dark);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 0.6rem 1rem;
-      color: var(--text-main);
-      font-size: 0.85rem;
       width: 100%;
-      max-width: 320px;
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 1rem 0.65rem 2.4rem;
+      color: var(--text-main);
+      font-size: 0.88rem;
       outline: none;
+      transition: var(--transition);
     }
 
     .search-input:focus {
       border-color: var(--primary);
+      background: #ffffff;
     }
 
-    .stats-info {
-      font-size: 0.825rem;
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      pointer-events: none;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    .pill-btn {
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
       color: var(--text-muted);
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
       font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
     }
 
-    /* GRID DE TARJETAS (REQUISITO FUNDAMENTAL) */
-    .tarjetas-grid {
+    .pill-btn:hover {
+      background: var(--bg-surface);
+      color: var(--text-main);
+    }
+
+    .pill-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    /* GRID DE LAS 6 TARJETAS */
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.75rem;
     }
 
-    /* TARJETA INDIVIDUAL (Cada fila de Google Sheets) */
-    .tarjeta-servicio {
+    .service-card {
       background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: var(--shadow);
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
     }
 
-    .tarjeta-servicio:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-accent);
-      background: var(--bg-card-hover);
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--border-focus);
     }
 
-    .tarjeta-img-wrap {
+    .service-img-wrap {
       position: relative;
       width: 100%;
-      height: 200px;
-      background: #000;
+      height: 210px;
+      background: #dfd8cc;
       overflow: hidden;
+      cursor: pointer;
     }
 
-    .tarjeta-img {
+    .service-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .tarjeta-servicio:hover .tarjeta-img {
-      transform: scale(1.04);
+    .service-card:hover .service-img {
+      transform: scale(1.05);
     }
 
-    .tarjeta-precio-tag {
+    .service-category-badge {
       position: absolute;
-      bottom: 12px;
-      right: 12px;
-      background: rgba(9, 13, 22, 0.9);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border);
-      color: var(--accent-green);
-      font-weight: 800;
-      font-size: 1rem;
-      padding: 0.35rem 0.75rem;
-      border-radius: var(--radius-sm);
+      top: 14px;
+      left: 14px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.28rem 0.7rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.02em;
     }
 
-    .tarjeta-body {
-      padding: 1.25rem;
+    .service-price-pill {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(45, 74, 62, 0.2);
+      color: var(--primary);
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-sm);
+      letter-spacing: -0.01em;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .service-body {
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
       flex: 1;
     }
 
-    .tarjeta-nombre {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #fff;
+    .service-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
       letter-spacing: -0.01em;
+      margin-bottom: 0.65rem;
+      cursor: pointer;
+      transition: color 0.2s;
     }
 
-    .tarjeta-desc {
-      font-size: 0.85rem;
+    .service-name:hover {
+      color: var(--primary);
+    }
+
+    .service-desc {
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.6;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      margin-bottom: 1.25rem;
     }
 
-    .tarjeta-footer {
-      padding: 1rem 1.25rem 1.25rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    .service-features-list {
+      list-style: none;
       display: flex;
-      gap: 0.75rem;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
     }
 
-    .btn-whatsapp {
+    .service-feature-item {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .service-feature-item span.bullet {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .service-footer {
+      padding: 1rem 1.5rem 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      gap: 0.65rem;
+      background: var(--bg-card);
+    }
+
+    .btn-card-quote {
       flex: 1;
-      background: var(--accent-whatsapp);
-      color: #000;
-      text-decoration: none;
-      padding: 0.65rem 1rem;
+      background: var(--primary-light);
+      border: 1px solid rgba(45, 74, 62, 0.25);
+      color: var(--primary);
+      padding: 0.7rem 0.9rem;
       border-radius: var(--radius-sm);
-      font-weight: 700;
       font-size: 0.825rem;
+      font-weight: 700;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.4rem;
-      transition: background 0.2s;
+      transition: var(--transition);
     }
 
-    .btn-whatsapp:hover {
-      background: var(--accent-whatsapp-hover);
+    .btn-card-quote:hover, .btn-card-quote.added {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
     }
 
-    .btn-detalle {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--border-accent);
-      color: var(--text-main);
-      padding: 0.65rem 0.85rem;
+    .btn-card-wsp {
+      background: var(--accent-wsp);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.7rem 0.95rem;
       border-radius: var(--radius-sm);
       font-size: 0.825rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: var(--transition);
     }
 
-    .btn-detalle:hover {
-      background: rgba(255, 255, 255, 0.12);
+    .btn-card-wsp:hover {
+      background: var(--accent-wsp-hover);
+      transform: translateY(-2px);
     }
 
-    /* ESTADO DE CARGA Y VACÍO */
-    .loading-state, .empty-state {
-      text-align: center;
-      padding: 3rem 1.5rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text-muted);
-      grid-column: 1 / -1;
-    }
-
-    .spinner {
-      width: 32px;
-      height: 32px;
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      border-top-color: var(--primary);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 0 auto 1rem;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* FOOTER */
-    footer {
-      margin-top: auto;
-      border-top: 1px solid var(--border);
-      background: var(--bg-card);
-      padding: 2rem 1.5rem;
-      color: var(--text-muted);
-      font-size: 0.825rem;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      text-align: center;
-    }
-
-    @media (min-width: 768px) {
-      .footer-container {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-      }
-    }
-
-    /* MODAL DE CÓDIGO APPS SCRIPT Y GUÍA */
-    .modal-overlay {
+    /* MODAL DE DETALLES */
+    .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(36, 33, 29, 0.65);
       backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       z-index: 100;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
+      padding: 1.25rem;
     }
 
-    .modal-overlay.active {
+    .modal-backdrop.active {
       display: flex;
     }
 
-    .modal-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      max-width: 720px;
+    .modal-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      max-width: 580px;
       width: 100%;
-      max-height: 85vh;
+      max-height: 90vh;
       overflow-y: auto;
-      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
+
+    .modal-hero-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .modal-close-btn:hover {
+      background: #ffffff;
+      transform: scale(1.05);
+    }
+
+    .modal-content-body {
+      padding: 1.75rem;
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
     }
 
-    .modal-header {
+    .modal-price-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.75rem;
     }
 
-    .modal-title {
-      font-size: 1.15rem;
+    .modal-price-val {
+      font-size: 1.5rem;
       font-weight: 800;
-      color: #fff;
+      color: var(--primary);
     }
 
-    .btn-close {
+    /* DRAWER DEL COTIZADOR */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(36, 33, 29, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 90;
+      display: none;
+      justify-content: flex-end;
+    }
+
+    .drawer-backdrop.active {
+      display: flex;
+    }
+
+    .drawer-panel {
+      background: #ffffff;
+      border-left: 1px solid var(--border-subtle);
+      width: 100%;
+      max-width: 440px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 1.75rem;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .drawer-items-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.25rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .drawer-item {
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .drawer-item-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .drawer-item-price {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .drawer-item-del {
       background: none;
       border: none;
+      color: #dc2626;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-left: 0.75rem;
+    }
+
+    .drawer-total-box {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* SECCIÓN DE CONTACTO RÁPIDO */
+    .contact-banner {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    /* FOOTER (CON NOMBRE ELIANA ROLDÁN Y WHATSAPP) */
+    footer {
+      background: #ece7dc;
+      border-top: 1px solid var(--border-subtle);
+      padding: 3.5rem 1.5rem 2rem;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-container {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
+    }
+
+    .footer-brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand-desc {
+      font-size: 0.88rem;
       color: var(--text-muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 0 0.5rem;
+      max-width: 380px;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
     }
 
-    .code-block {
-      background: #0a0e17;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 1rem;
-      font-family: monospace;
-      font-size: 0.75rem;
-      color: #e5e7eb;
-      overflow-x: auto;
-      white-space: pre;
+    .footer-col-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    .btn-copy {
-      background: var(--primary);
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-author-box {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #487361);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
       color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm);
-      font-weight: 600;
+      box-shadow: 0 4px 10px var(--primary-glow);
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .author-role {
       font-size: 0.8rem;
-      cursor: pointer;
-      width: fit-content;
+      color: var(--accent-warm);
+      font-weight: 700;
+    }
+
+    .author-wsp-direct {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-wsp-hover);
+      text-decoration: none;
+      margin-top: 0.25rem;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      sm-flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .author-signature-highlight {
+      color: var(--text-main);
+      font-weight: 800;
     }
   </style>
-<script src="/_aistudio-iframe.js?v=2c34bde1"></script><script src="https://cdn.jsdelivr.net/npm/html2canvas-pro@2.0.4"></script><style>.aistudio-hover-highlight { box-shadow: inset 0 0 0 0.5px white, inset 0 0 0 1.5px rgba(128,128,128,0.6) !important; }.aistudio-active-highlight { outline: 2px solid #87a9ff !important; outline-offset: -2px !important; box-shadow: 0 0 0 0.5px rgba(0,0,0,0.3), inset 0 0 0 0.5px rgba(0,0,0,0.3) !important; }.aistudio-generating-blur { filter: blur(5px) grayscale(100%) brightness(28%) !important; transition: filter 0.3s ease; }#aistudio-focus-mode-tag { position: absolute; display: none; align-items: center; gap: 4px; background: #87a9ff; border-radius: 12px; z-index: 10000; padding: 8px; color: #32302c; font-family: Inter, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; pointer-events: none; }#aistudio-hover-mode-tag { position: absolute; display: none; align-items: center; gap: 4px; background: rgba(128,128,128,0.6); border-radius: 12px; z-index: 10000; padding: 8px; color: white; font-family: Inter, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; pointer-events: none; }.aistudio-img-icon { display: none; vertical-align: middle; pointer-events: auto; cursor: pointer; }.aistudio-img-icon.visible { display: inline-flex; }#aistudio-focus-mode-tag .aistudio-img-icon { position: relative; width: 26px; height: 26px; background: #32302c; border-radius: 6px; margin: -4px -4px -4px 0; }#aistudio-focus-mode-tag .aistudio-img-icon::before { content: ""; position: absolute; top: 4px; left: 4px; width: 18px; height: 18px; background-color: white; -webkit-mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); mask-size: contain; mask-repeat: no-repeat; }#aistudio-hover-mode-tag .aistudio-img-icon { position: relative; width: 18px; height: 18px; margin-left: 4px; }#aistudio-hover-mode-tag .aistudio-img-icon::before { content: ""; position: absolute; top: 0; left: 0; width: 18px; height: 18px; background-color: white; -webkit-mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); mask-size: contain; mask-repeat: no-repeat; }#aistudio-focus-mode-tag .aistudio-img-icon:hover, #aistudio-hover-mode-tag .aistudio-img-icon:hover { background: #424242 !important; }#aistudio-focus-mode-tag .aistudio-img-icon:active, #aistudio-hover-mode-tag .aistudio-img-icon:active { background: #393f51 !important; }</style></head>
+</head>
 <body>
 
-  <!-- HEADER -->
+  <!-- NAVEGACIÓN -->
   <header>
-    <div class="header-container">
-      <div class="brand">
-        <div class="brand-icon">⚡</div>
-        <div>
-          <h1 class="brand-title">Servicios de Marketing</h1>
+    <div class="nav-container">
+      <a href="#" class="brand-link">
+        <div class="brand-logo-badge">ER</div>
+        <div class="brand-info">
+          <span class="brand-name">Eliana Roldán</span>
+          <span class="brand-tagline">Marketing Digital</span>
         </div>
-        <span class="brand-badge">Actividad: Google Sheets + Apps Script</span>
-      </div>
+      </a>
 
-      <div class="header-actions">
-        <button class="btn-header" onclick="abrirModalAyuda()">
-          📋 Guía y Código Backend
-        </button>
-        <button class="btn-header" onclick="descargarIndex()">
-          💾 Descargar index.html
+      <ul class="nav-links">
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- WhatsApp con número directo +5492984926445 -->
+        <a href="https://wa.me/5492984926445?text=Hola%20Eliana,%20quiero%20consultar%20por%20tus%20servicios%20de%20marketing%20digital." target="_blank" rel="noopener noreferrer" class="btn-wsp-nav">
+          💬 WHATSAPP
+        </a>
+
+        <button class="btn-cotizador" onclick="toggleDrawer(true)">
+          🛒 Cotizador
+          <span class="cart-badge" id="cart-counter">0</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main>
-    <!-- HERO SECTION -->
-    <section class="hero-banner">
-      <div class="hero-badge">
-        <span class="status-dot"></span>
-        <span id="estado-datos">Base de Datos: 6 Servicios Cargados</span>
+  <!-- HERO SECTION CON PALETA BEIGE -->
+  <section class="hero-section">
+    <div class="hero-badge-pill">
+      <span class="pulse-dot"></span>
+      <span>Agencia de Estrategia & Marketing Digital</span>
+    </div>
+
+    <h1 class="hero-title">
+      Impulsamos tu negocio con <span class="highlight-text">estrategias digitales</span> que generan resultados
+    </h1>
+
+    <p class="hero-subtitle">
+      Soluciones integrales de diseño web, gestión de redes, publicidad en Google y Meta, optimización SEO y automatización orientadas a captar clientes y potenciar tus ventas.
+    </p>
+
+    <div class="hero-cta-group">
+      <a href="#servicios" class="btn-primary">
+        Explorar Catálogo
+      </a>
+      <!-- Enlace directo con número de WhatsApp -->
+      <a href="https://wa.me/5492984926445?text=Hola%20Eliana,%20quiero%20hacerte%20una%20consulta%20sobre%20tus%20servicios." target="_blank" rel="noopener noreferrer" class="btn-secondary">
+        💬 Contactar a WhatsApp
+      </a>
+    </div>
+
+    <!-- ESPACIO DISPUESTO PARA AÑADIR LA URL DE GOOGLE APPS SCRIPT -->
+      <div class="url-input-field-wrap">
+        <input 
+          type="url" 
+          id="input-url-script" 
+          class="url-input" 
+          placeholder="https://script.google.com/macros/s/AKfycbzp7Ezfd_FbUf-8zCMXDmdM_lY3FYwDhSpO7FBx630UsLfCepTI52dyrE-nddkjv86l/exec"
+        >
+        <button class="btn-connect-url" onclick="conectarUrlPersonalizada()">
+          Cargar URL
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO DE SERVICIOS -->
+  <section class="catalog-section" id="servicios">
+    <div class="catalog-header">
+      <h2 class="section-title">Catálogo de Servicios</h2>
+      <p class="section-subtitle">
+        Selecciona los servicios que requieres y cotízalos en tiempo real o consúltalos directamente vía WhatsApp.
+      </p>
+    </div>
+
+    <!-- CONTROLES: BUSCADOR Y FILTROS POR CATEGORÍA -->
+    <div class="catalog-controls">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          id="buscador-input" 
+          class="search-input" 
+          placeholder="Buscar servicio (ej: SEO, Web, Redes)..." 
+          oninput="filtrarServicios()"
+        >
       </div>
 
-      <h2 class="hero-title">Catálogo Oficial de Servicios</h2>
-      <p class="hero-desc">
-        Este catálogo frontend se alimenta de la hoja de cálculo <strong>Servicios — Tu Apellido</strong> a través de Google Apps Script. Cada fila de la hoja (A: Nombre, B: Precio, C: Descripcion, D: Imagen de Pexels) se renderiza dinámicamente en una tarjeta.
-      </p>
+      <div class="filter-pills" id="categorias-filtro">
+        <button class="pill-btn active" onclick="filtrarCategoria('todas', this)">Todos</button>
+        <button class="pill-btn" onclick="filtrarCategoria('Desarrollo', this)">Desarrollo Web</button>
+        <button class="pill-btn" onclick="filtrarCategoria('Social Media', this)">Redes Sociales</button>
+        <button class="pill-btn" onclick="filtrarCategoria('Pauta', this)">Publicidad Digital</button>
+        <button class="pill-btn" onclick="filtrarCategoria('Posicionamiento', this)">SEO & Analítica</button>
+      </div>
+    </div>
 
-      <!-- BARRA DE CONEXIÓN CON APPS SCRIPT -->
-      <div class="sync-box">
-        <div class="sync-box-header">
-          <span>🔗https://script.google.com/macros/s/AKfycbzp7Ezfd_FbUf-8zCMXDmdM_lY3FYwDhSpO7FBx630UsLfCepTI52dyrE-nddkjv86l/exec (Apps Script /exec)</span>
-          <span id="info-sync">Modo: Datos predeterminados</span>
+    <!-- GRID DE TARJETAS -->
+    <div class="services-grid" id="grid-servicios">
+      <!-- Inyectado por JavaScript -->
+    </div>
+  </section>
+
+  <!-- BANNER DE CONTACTO RÁPIDO CON WHATSAPP -->
+  <section class="catalog-section" id="contacto">
+    <div class="contact-banner">
+      <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--text-main);">¿Conversamos sobre tu proyecto?</h3>
+      <p style="color: var(--text-muted); max-width: 600px; font-size: 0.95rem;">
+        Hablemos directamente por WhatsApp sobre las necesidades de tu marca y definamos juntos la mejor propuesta de valor.
+      </p>
+      <!-- Botón con el número de WhatsApp +5492984926445 -->
+      <a href="https://wa.me/5492984926445?text=Hola%20Eliana,%20quiero%20solicitar%20un%20asesoramiento%20de%20marketing%20digital." target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: var(--accent-wsp); font-weight: 800;">
+        💬 Enviar mensaje al +54 9 298 492-6445
+      </a>
+    </div>
+  </section>
+
+  <!-- MODAL DE DETALLES -->
+  <div id="modal-detalle" class="modal-backdrop" onclick="cerrarModalDetalle(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="cerrarModalDetalle()">&times;</button>
+      <img id="modal-img" src="" alt="Servicio" class="modal-hero-img">
+      
+      <div class="modal-content-body">
+        <div>
+          <span id="modal-cat" style="font-size: 0.75rem; font-weight: 700; color: var(--accent-warm); text-transform: uppercase;"></span>
+          <h3 id="modal-titulo" style="font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-top: 0.25rem;"></h3>
         </div>
-        <div class="sync-input-row">
-          <input type="url" id="input-apps-script" class="sync-input" placeholder="https://script.google.com/macros/s/AKfycbzp7Ezfd_FbUf-8zCMXDmdM_lY3FYwDhSpO7FBx630UsLfCepTI52dyrE-nddkjv86l/exec">
-          <button class="btn-sync" onclick="conectarAppsScript()">
-            🔄 Sincronizar Hoja
+
+        <div class="modal-price-box">
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; display: block;">Inversión estimada</span>
+            <span id="modal-precio" class="modal-price-val"></span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">En pesos argentinos</span>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem;">Descripción</h4>
+          <p id="modal-desc" style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;"></p>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem;">Entregables incluidos</h4>
+          <ul id="modal-entregables" style="list-style: none; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.85rem; color: var(--text-muted);"></ul>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+          <a id="modal-wsp-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-card-wsp" style="flex: 1; text-align: center;">
+            💬 Consultar por WhatsApp
+          </a>
+          <button id="modal-add-btn" class="btn-card-quote" style="flex: 1;">
+            ➕ Agregar al Cotizador
           </button>
         </div>
-        <p class="sync-note">
-          💡 Puedes probar con tu propio enlace de Apps Script o explorar los 6 servicios predeterminados de marketing digital.
-        </p>
-      </div>
-    </section>
-
-    <!-- BARRA DE BÚSQUEDA Y ESTADÍSTICAS -->
-    <section class="controls-bar">
-      <input type="text" id="input-busqueda" class="search-input" placeholder="🔍 Buscar por nombre o descripción..." oninput="filtrarServicios()">
-      <div class="stats-info" id="contador-servicios">Mostrando 6 servicios</div>
-    </section>
-
-    <!-- CONTENEDOR DE TARJETAS (Generadas dinámicamente por JavaScript) -->
-    <section id="catalogo-servicios" class="tarjetas-grid">
-          <article class="tarjeta-servicio">
-            <div>
-              <div class="tarjeta-img-wrap">
-                <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Diseño web" class="tarjeta-img" loading="lazy" referrerpolicy="no-referrer" onerror="this.src='https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800'">
-                <div class="tarjeta-precio-tag">$ 75.000</div>
-              </div>
-
-              <div class="tarjeta-body">
-                <h3 class="tarjeta-nombre">Diseño web</h3>
-                <p class="tarjeta-desc">Diseño y desarrollo de sitios web modernos, rápidos y 100% adaptables a celulares (responsive). Optimizados para convertir visitantes en clientes.</p>
-              </div>
-            </div>
-
-            <div class="tarjeta-footer">
-              <a href="https://wa.me/2984926445?text=Hola!%20Vi%20su%20cat%C3%A1logo%20digital%20y%20quiero%20consultar%20por%20el%20servicio%20de%20*Dise%C3%B1o%20web*%20(%24%2075.000)." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-                💬 WhatsApp
-              </a>
-              <button class="btn-detalle" onclick="alert('Servicio: Diseño web\nPrecio: $ 75.000\n\nDescripción: Diseño y desarrollo de sitios web modernos, rápidos y 100% adaptables a celulares (responsive). Optimizados para convertir visitantes en clientes.')">
-                ℹ️ Info
-              </button>
-            </div>
-          </article>
-        
-          <article class="tarjeta-servicio">
-            <div>
-              <div class="tarjeta-img-wrap">
-                <img src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Gestión de redes sociales" class="tarjeta-img" loading="lazy" referrerpolicy="no-referrer" onerror="this.src='https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800'">
-                <div class="tarjeta-precio-tag">$ 45.000</div>
-              </div>
-
-              <div class="tarjeta-body">
-                <h3 class="tarjeta-nombre">Gestión de redes sociales</h3>
-                <p class="tarjeta-desc">Planificación de contenidos, diseño de publicaciones y administración profesional de Instagram, Facebook y LinkedIn para potenciar tu comunidad digital.</p>
-              </div>
-            </div>
-
-            <div class="tarjeta-footer">
-              <a href="https://wa.me/2984926445?text=Hola!%20Vi%20su%20cat%C3%A1logo%20digital%20y%20quiero%20consultar%20por%20el%20servicio%20de%20*Gesti%C3%B3n%20de%20redes%20sociales*%20(%24%2045.000)." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-                💬 WhatsApp
-              </a>
-              <button class="btn-detalle" onclick="alert('Servicio: Gestión de redes sociales\nPrecio: $ 45.000\n\nDescripción: Planificación de contenidos, diseño de publicaciones y administración profesional de Instagram, Facebook y LinkedIn para potenciar tu comunidad digital.')">
-                ℹ️ Info
-              </button>
-            </div>
-          </article>
-        
-          <article class="tarjeta-servicio">
-            <div>
-              <div class="tarjeta-img-wrap">
-                <img src="https://images.pexels.com/photos/905163/pexels-photo-905163.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Publicidad digital" class="tarjeta-img" loading="lazy" referrerpolicy="no-referrer" onerror="this.src='https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800'">
-                <div class="tarjeta-precio-tag">$ 55.000</div>
-              </div>
-
-              <div class="tarjeta-body">
-                <h3 class="tarjeta-nombre">Publicidad digital</h3>
-                <p class="tarjeta-desc">Campañas de anuncios de alto rendimiento en Meta Ads (Facebook e Instagram) y Google Ads orientadas a generar ventas y clientes calificados.</p>
-              </div>
-            </div>
-
-            <div class="tarjeta-footer">
-              <a href="https://wa.me/2984926445?text=Hola!%20Vi%20su%20cat%C3%A1logo%20digital%20y%20quiero%20consultar%20por%20el%20servicio%20de%20*Publicidad%20digital*%20(%24%2055.000)." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-                💬 WhatsApp
-              </a>
-              <button class="btn-detalle" onclick="alert('Servicio: Publicidad digital\nPrecio: $ 55.000\n\nDescripción: Campañas de anuncios de alto rendimiento en Meta Ads (Facebook e Instagram) y Google Ads orientadas a generar ventas y clientes calificados.')">
-                ℹ️ Info
-              </button>
-            </div>
-          </article>
-        
-          <article class="tarjeta-servicio">
-            <div>
-              <div class="tarjeta-img-wrap">
-                <img src="https://images.pexels.com/photos/270637/pexels-photo-270637.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="SEO" class="tarjeta-img" loading="lazy" referrerpolicy="no-referrer" onerror="this.src='https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800'">
-                <div class="tarjeta-precio-tag">$ 48.000</div>
-              </div>
-
-              <div class="tarjeta-body">
-                <h3 class="tarjeta-nombre">SEO</h3>
-                <p class="tarjeta-desc">Posicionamiento orgánico en los primeros resultados de Google. Auditoría técnica, optimización on-page y estrategia de palabras clave del negocio.</p>
-              </div>
-            </div>
-
-            <div class="tarjeta-footer">
-              <a href="https://wa.me/2984926445?text=Hola!%20Vi%20su%20cat%C3%A1logo%20digital%20y%20quiero%20consultar%20por%20el%20servicio%20de%20*SEO*%20(%24%2048.000)." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-                💬 WhatsApp
-              </a>
-              <button class="btn-detalle" onclick="alert('Servicio: SEO\nPrecio: $ 48.000\n\nDescripción: Posicionamiento orgánico en los primeros resultados de Google. Auditoría técnica, optimización on-page y estrategia de palabras clave del negocio.')">
-                ℹ️ Info
-              </button>
-            </div>
-          </article>
-        
-          <article class="tarjeta-servicio">
-            <div>
-              <div class="tarjeta-img-wrap">
-                <img src="https://images.pexels.com/photos/1591060/pexels-photo-1591060.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Email marketing" class="tarjeta-img" loading="lazy" referrerpolicy="no-referrer" onerror="this.src='https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800'">
-                <div class="tarjeta-precio-tag">$ 35.000</div>
-              </div>
-
-              <div class="tarjeta-body">
-                <h3 class="tarjeta-nombre">Email marketing</h3>
-                <p class="tarjeta-desc">Diseño e implementación de secuencias automáticas de bienvenida, carritos abandonados y newsletters atractivos con altas tasas de apertura.</p>
-              </div>
-            </div>
-
-            <div class="tarjeta-footer">
-              <a href="https://wa.me/2984926445?text=Hola!%20Vi%20su%20cat%C3%A1logo%20digital%20y%20quiero%20consultar%20por%20el%20servicio%20de%20*Email%20marketing*%20(%24%2035.000)." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-                💬 WhatsApp
-              </a>
-              <button class="btn-detalle" onclick="alert('Servicio: Email marketing\nPrecio: $ 35.000\n\nDescripción: Diseño e implementación de secuencias automáticas de bienvenida, carritos abandonados y newsletters atractivos con altas tasas de apertura.')">
-                ℹ️ Info
-              </button>
-            </div>
-          </article>
-        
-          <article class="tarjeta-servicio">
-            <div>
-              <div class="tarjeta-img-wrap">
-                <img src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Analítica digital" class="tarjeta-img" loading="lazy" referrerpolicy="no-referrer" onerror="this.src='https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800'">
-                <div class="tarjeta-precio-tag">$ 40.000</div>
-              </div>
-
-              <div class="tarjeta-body">
-                <h3 class="tarjeta-nombre">Analítica digital</h3>
-                <p class="tarjeta-desc">Implementación integral de Google Analytics 4 (GA4) y Google Tag Manager, con paneles interactivos en Looker Studio para medir conversiones.</p>
-              </div>
-            </div>
-
-            <div class="tarjeta-footer">
-              <a href="https://wa.me/2984926445?text=Hola!%20Vi%20su%20cat%C3%A1logo%20digital%20y%20quiero%20consultar%20por%20el%20servicio%20de%20*Anal%C3%ADtica%20digital*%20(%24%2040.000)." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-                💬 WhatsApp
-              </a>
-              <button class="btn-detalle" onclick="alert('Servicio: Analítica digital\nPrecio: $ 40.000\n\nDescripción: Implementación integral de Google Analytics 4 (GA4) y Google Tag Manager, con paneles interactivos en Looker Studio para medir conversiones.')">
-                ℹ️ Info
-              </button>
-            </div>
-          </article>
-        </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <div>
-        <strong>Servicios — Marketing Digital</strong>
-        <p>Actividad práctica de integración: Google Sheets como base de datos + Apps Script + Frontend HTML/CSS/JS.</p>
-  </footer>
-
-  <!-- MODAL DE AYUDA Y CÓDIGO APPS SCRIPT -->
-  <div id="modal-ayuda" class="modal-overlay" onclick="cerrarModalAyuda(event)">
-    <div class="modal-box" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <h3 class="modal-title">Código Backend para Apps Script (doGet)</h3>
-        <button class="btn-close" onclick="cerrarModalAyuda()">×</button>
-      </div>
-
-      <p style="font-size: 0.85rem; color: var(--text-muted);">
-        En tu hoja de cálculo ve a <strong>Extensiones → Apps Script</strong>, pega este código y despliega como <strong>Aplicación Web</strong> con acceso a <strong>Cualquier usuario (Anyone)</strong>:
-      </p>
-
-      <button class="btn-copy" onclick="copiarCodigoAppsScript()">
-        https://script.google.com/macros/s/AKfycbzp7Ezfd_FbUf-8zCMXDmdM_lY3FYwDhSpO7FBx630UsLfCepTI52dyrE-nddkjv86l/exec
-      </button>
-
-      <div class="code-block" id="bloque-codigo">function doGet(e) {
-  try {
-    // 1. Abrir la hoja activa y buscar la pestaña "Servicios"
-    var libro = SpreadsheetApp.getActiveSpreadsheet();
-    var hoja = libro.getSheetByName("Servicios");
-    
-    if (!hoja) {
-      return ContentService.createTextOutput(JSON.stringify({
-        error: "No se encontró la hoja llamada 'Servicios'."
-      })).setMimeType(ContentService.MimeType.JSON);
-    }
-    
-    // 2. Obtener todos los datos de la hoja
-    var datos = hoja.getDataRange().getValues();
-    
-    // Fila 1 son los encabezados: Nombre, Precio, Descripcion, Imagen
-    // A partir de la fila 2 están los 6 servicios
-    var resultado = [];
-    
-    for (var i = 1; i &lt; datos.length; i++) {
-      var fila = datos[i];
-      if (!fila[0]) continue; // Ignorar filas vacías
-      
-      resultado.push({
-        nombre: fila[0] ? String(fila[0]).trim() : "",
-        precio: Number(fila[1]) || 0,
-        descripcion: fila[2] ? String(fila[2]).trim() : "",
-        imagen: fila[3] ? String(fila[3]).trim() : ""
-      });
-    }
-    
-    // 3. Devolver los datos en formato JSON para que el frontend los lea
-    return ContentService.createTextOutput(JSON.stringify(resultado))
-      .setMimeType(ContentService.MimeType.JSON);
-      
-  } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({
-      error: error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
-  }
-}</div>
-
-      <div style="font-size: 0.8rem; background: rgba(79, 70, 229, 0.1); border: 1px solid rgba(79, 70, 229, 0.3); padding: 0.75rem; border-radius: 8px;">
-        <strong>Pasos para desplegar:</strong><br>
-        1. Clic en botón azul <strong>Implementar</strong> → <strong>Nueva implementación</strong>.<br>
-        2. Seleccionar tipo <strong>Aplicación web</strong>.<br>
-        3. En <em>Quién tiene acceso</em>, seleccionar obligatoriamente: <strong>Cualquier usuario (Anyone)</strong>.<br>
-        4. Copiar la URL que termina en <code>/exec</code> y pegarla en el campo superior de esta web.
       </div>
     </div>
   </div>
 
-  <!-- JAVASCRIPT DEL FRONTEND (Consumo de API y generación dinámica de tarjetas) -->
+  <!-- DRAWER DEL COTIZADOR -->
+  <div id="drawer-cotizador" class="drawer-backdrop" onclick="toggleDrawer(false)">
+    <div class="drawer-panel" onclick="event.stopPropagation()">
+      <div class="drawer-header">
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main);">Cotizador de Servicios</h3>
+        <button style="background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer;" onclick="toggleDrawer(false)">&times;</button>
+      </div>
+
+      <div class="drawer-items-list" id="drawer-lista"></div>
+
+      <div class="drawer-total-box">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Total Presupuestado</span>
+          <span id="drawer-total" style="font-size: 1.6rem; font-weight: 800; color: var(--primary);">$ 0</span>
+        </div>
+
+        <a id="drawer-enviar-wsp" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: var(--accent-wsp); text-align: center; justify-content: center; font-weight: 800;">
+          📲 Enviar Cotización por WhatsApp
+        </a>
+
+        <button onclick="vaciarCotizador()" style="background: none; border: none; color: var(--text-dim); font-size: 0.75rem; cursor: pointer; text-decoration: underline;">
+          Vaciar cotizador
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER CON NOMBRE ELIANA ROLDÁN Y WHATSAPP -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <h4 class="footer-brand-title">Eliana Roldán</h4>
+        <p class="footer-brand-desc">
+          Especialista en estrategias digitales, desarrollo web de alta conversión y gestión integral de campañas para marcas e iniciativas profesionales.
+        </p>
+        
+        <!-- CAJA DE AUTORÍA DESTACADA -->
+        <div class="footer-author-box">
+          <div class="author-avatar">ER</div>
+          <div>
+            <div class="author-name">Eliana Roldán</div>
+            <div class="author-role">Marketing Digital & Desarrollo Web</div>
+            <!-- Número de WhatsApp -->
+            <a href="https://wa.me/5492984926445" target="_blank" rel="noopener noreferrer" class="author-wsp-direct">
+              📲 +54 9 298 492-6445
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h5 class="footer-col-title">Servicios</h5>
+        <ul class="footer-links">
+          <li><a href="#servicios">Diseño Web Responsive</a></li>
+          <li><a href="#servicios">Gestión de Redes Sociales</a></li>
+          <li><a href="#servicios">Publicidad Digital Meta & Google</a></li>
+          <li><a href="#servicios">Posicionamiento SEO</a></li>
+          <li><a href="#servicios">Email Marketing</a></li>
+          <li><a href="#servicios">Analítica Digital GA4</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="footer-col-title">Contacto</h5>
+        <ul class="footer-links">
+          <!-- WhatsApp directo con número -->
+          <li>
+            <a href="https://wa.me/5492984926445?text=Hola%20Eliana,%20te%20contacto%20desde%20tu%20sitio%20web." target="_blank" rel="noopener noreferrer">
+              WhatsApp: +54 9 298 492-6445
+            </a>
+          </li>
+          <li><a href="mailto:elianaenoriega@gmail.com">Email: elianaenoriega@gmail.com</a></li>
+          <li><a href="#">Horario: Lunes a Viernes 09:00 - 18:00</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Catálogo de Servicios • Diseñado y desarrollado por <span class="author-signature-highlight">Eliana Roldán</span>.</p>
+      <p>WhatsApp: +54 9 298 492-6445</p>
+    </div>
+  </footer>
+
+  <!-- LÓGICA JAVASCRIPT CON ESPACIO PARA AÑADIR LA URL DE APPS SCRIPT -->
   <script>
-    // 1. DATOS PREDETERMINADOS (Los 6 servicios de marketing con enlaces directos de Pexels)
+    // ==========================================================================
+    // NÚMERO DE WHATSAPP CONFIGURADO
+    // ==========================================================================
+    const TELEFONO_WHATSAPP = "5492984926445";
+
+    // ==========================================================================
+    // ESPACIO PARA AÑADIR LA URL DE GOOGLE APPS SCRIPT:
+    // (Puedes colocar aquí tu URL o pegarla directamente en el campo superior de la página)
+    // ==========================================================================
+    const URL_APPS_SCRIPT_CONFIGURADA = ""; 
+
+    // SERVICIOS BASE DE MARKETING DIGITAL (CON IMÁGENES DE PEXELS)
     const SERVICIOS_DEFAULT = [
       {
+        id: "serv-1",
         nombre: "Diseño web",
         precio: 75000,
-        descripcion: "Diseño y desarrollo de sitios web modernos, rápidos y 100% adaptables a celulares (responsive). Optimizados para convertir visitantes en clientes.",
-        imagen: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800"
+        descripcion: "Diseño y desarrollo de sitios web modernos, rápidos y 100% adaptables a celulares (responsive). Optimizados para convertir visitantes en clientes potenciales.",
+        imagen: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
+        categoria: "Desarrollo",
+        entregables: [
+          "Diseño 100% responsive para celulares, tablets y computadoras",
+          "Optimización de velocidad y buenas prácticas SEO",
+          "Botones flotantes de WhatsApp y formulario de contacto",
+          "Panel autoadministrable intuitivo"
+        ]
       },
       {
+        id: "serv-2",
         nombre: "Gestión de redes sociales",
         precio: 45000,
-        descripcion: "Planificación de contenidos, diseño de publicaciones y administración profesional de Instagram, Facebook y LinkedIn para potenciar tu comunidad digital.",
-        imagen: "https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800"
+        descripcion: "Planificación de contenidos, diseño gráfico de publicaciones y administración profesional de Instagram, Facebook y LinkedIn para potenciar tu comunidad digital.",
+        imagen: "https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800",
+        categoria: "Social Media",
+        entregables: [
+          "Calendario mensual con 12 a 16 piezas (Reels y posts)",
+          "Diseño gráfico profesional adaptado a la identidad de marca",
+          "Redacción persuasiva (copywriting) enfocada en interacción y venta",
+          "Informe mensual de métricas y crecimiento de audiencia"
+        ]
       },
       {
+        id: "serv-3",
         nombre: "Publicidad digital",
         precio: 55000,
-        descripcion: "Campañas de anuncios de alto rendimiento en Meta Ads (Facebook e Instagram) y Google Ads orientadas a generar ventas y clientes calificados.",
-        imagen: "https://images.pexels.com/photos/905163/pexels-photo-905163.jpeg?auto=compress&cs=tinysrgb&w=800"
+        descripcion: "Campañas de anuncios de alto rendimiento en Meta Ads (Facebook e Instagram) y Google Ads orientadas a captar clientes calificados y generar ventas.",
+        imagen: "https://images.pexels.com/photos/905163/pexels-photo-905163.jpeg?auto=compress&cs=tinysrgb&w=800",
+        categoria: "Pauta",
+        entregables: [
+          "Configuración técnica de Pixel y API de Conversiones",
+          "Segmentación avanzada por intereses y audiencias personalizadas",
+          "Creación de creatividades publicitarias efectivas",
+          "Optimización continua y reporte de retorno (ROAS)"
+        ]
       },
       {
+        id: "serv-4",
         nombre: "SEO",
         precio: 48000,
-        descripcion: "Posicionamiento orgánico en los primeros resultados de Google. Auditoría técnica, optimización on-page y estrategia de palabras clave del negocio.",
-        imagen: "https://images.pexels.com/photos/270637/pexels-photo-270637.jpeg?auto=compress&cs=tinysrgb&w=800"
+        descripcion: "Posicionamiento orgánico en los primeros resultados de Google. Auditoría técnica, optimización on-page y estrategia de palabras clave con alta intención de compra.",
+        imagen: "https://images.pexels.com/photos/270637/pexels-photo-270637.jpeg?auto=compress&cs=tinysrgb&w=800",
+        categoria: "Posicionamiento",
+        entregables: [
+          "Auditoría técnica exhaustiva de tu sitio web",
+          "Investigación de palabras clave con mayor volumen de búsqueda",
+          "Optimización de títulos, meta descripciones y velocidad",
+          "Estrategia de contenidos para superar a la competencia"
+        ]
       },
       {
+        id: "serv-5",
         nombre: "Email marketing",
         precio: 35000,
-        descripcion: "Diseño e implementación de secuencias automáticas de bienvenida, carritos abandonados y newsletters atractivos con altas tasas de apertura.",
-        imagen: "https://images.pexels.com/photos/1591060/pexels-photo-1591060.jpeg?auto=compress&cs=tinysrgb&w=800"
+        descripcion: "Diseño e implementación de secuencias automáticas de bienvenida, carritos abandonados y newsletters atractivos con altas tasas de apertura y conversión.",
+        imagen: "https://images.pexels.com/photos/1591060/pexels-photo-1591060.jpeg?auto=compress&cs=tinysrgb&w=800",
+        categoria: "Desarrollo",
+        entregables: [
+          "Configuración técnica y verificación de dominio (SPF, DKIM)",
+          "Diseño de plantillas personalizadas y atractivas",
+          "Flujos automáticos de nutrición y post-venta",
+          "Segmentación inteligente de tu base de clientes"
+        ]
       },
       {
+        id: "serv-6",
         nombre: "Analítica digital",
         precio: 40000,
-        descripcion: "Implementación integral de Google Analytics 4 (GA4) y Google Tag Manager, con paneles interactivos en Looker Studio para medir conversiones.",
-        imagen: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800"
+        descripcion: "Implementación integral de Google Analytics 4 (GA4) y Google Tag Manager, con paneles interactivos en Looker Studio para medir conversiones y retorno de inversión.",
+        imagen: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800",
+        categoria: "Posicionamiento",
+        entregables: [
+          "Instalación profesional de GA4 y Google Tag Manager",
+          "Medición exacta de eventos clave (compras, clics a WhatsApp)",
+          "Panel visual personalizado en Looker Studio",
+          "Sesión explicativa de interpretación de métricas"
+        ]
       }
     ];
 
-    // Estado en memoria
-    let listaServicios = [...SERVICIOS_DEFAULT];
+    let serviciosData = [...SERVICIOS_DEFAULT];
+    let serviciosVisibles = [...serviciosData];
+    let categoriaSeleccionada = 'todas';
+    let cotizadorItems = [];
 
-    // 2. FUNCIÓN PARA FORMATEAR PRECIOS EN PESOS (Ejemplo: $ 50.000)
-    function formatearPrecio(precio) {
-      const numero = Number(precio) || 0;
-      return '$ ' + numero.toLocaleString('es-AR');
+    // FORMATEO DE PRECIO EN PESOS
+    function formatearPrecio(monto) {
+      return '$ ' + Number(monto).toLocaleString('es-AR');
     }
 
-    // 3. FUNCIÓN PARA CONSTRUIR ENLACE DE WHATSAPP
-    function crearEnlaceWhatsApp(nombre, precio) {
-      const mensaje = `Hola! Vi su catálogo digital y quiero consultar por el servicio de *${nombre}* (${formatearPrecio(precio)}).`;
-      return 'https://wa.me/?text=' + encodeURIComponent(mensaje);
+    // CONSTRUCTOR DE ENLACE DE WHATSAPP CON EL NÚMERO DE ELIANA (+5492984926445)
+    function construirEnlaceWsp(nombreServicio, precio) {
+      const msg = `Hola Eliana! Vi tu catálogo digital y quiero consultar por el servicio de *${nombreServicio}* (${formatearPrecio(precio)}).`;
+      return `https://wa.me/${TELEFONO_WHATSAPP}?text=` + encodeURIComponent(msg);
     }
 
-    // 4. FUNCIÓN PARA RENDERIZAR LAS TARJETAS EN EL DOM
-    function renderizarTarjetas(servicios) {
-      const contenedor = document.getElementById('catalogo-servicios');
-      const contador = document.getElementById('contador-servicios');
-
+    // RENDERIZAR GRID DE TARJETAS
+    function renderizarGrid(lista) {
+      const contenedor = document.getElementById('grid-servicios');
       if (!contenedor) return;
 
-      contador.textContent = `Mostrando ${servicios.length} servicio${servicios.length === 1 ? '' : 's'}`;
-
-      if (servicios.length === 0) {
+      if (lista.length === 0) {
         contenedor.innerHTML = `
-          <div class="empty-state">
-            <h3>No se encontraron servicios</h3>
-            <p>Prueba con otro término de búsqueda.</p>
+          <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <p style="color: var(--text-muted); font-size: 1rem;">No se encontraron servicios que coincidan con la búsqueda.</p>
           </div>
         `;
         return;
       }
 
-      contenedor.innerHTML = servicios.map(servicio => {
-        const linkWsp = crearEnlaceWhatsApp(servicio.nombre, servicio.precio);
-        const precioFormateado = formatearPrecio(servicio.precio);
+      contenedor.innerHTML = lista.map(servicio => {
+        const estaEnCotizador = cotizadorItems.some(item => item.id === servicio.id);
+        const linkWsp = construirEnlaceWsp(servicio.nombre, servicio.precio);
+        const precioFmt = formatearPrecio(servicio.precio);
 
         return `
-          <article class="tarjeta-servicio">
+          <article class="service-card" id="card-${servicio.id}">
             <div>
-              <div class="tarjeta-img-wrap">
+              <div class="service-img-wrap" onclick="abrirModalDetalle('${servicio.id}')">
                 <img 
                   src="${servicio.imagen}" 
                   alt="${servicio.nombre}" 
-                  class="tarjeta-img"
+                  class="service-img" 
                   loading="lazy"
                   referrerpolicy="no-referrer"
                   onerror="this.src='https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800'"
                 >
-                <div class="tarjeta-precio-tag">${precioFormateado}</div>
+                <span class="service-category-badge">${servicio.categoria || 'Marketing'}</span>
+                <span class="service-price-pill">${precioFmt}</span>
               </div>
 
-              <div class="tarjeta-body">
-                <h3 class="tarjeta-nombre">${servicio.nombre}</h3>
-                <p class="tarjeta-desc">${servicio.descripcion}</p>
+              <div class="service-body">
+                <h3 class="service-name" onclick="abrirModalDetalle('${servicio.id}')">${servicio.nombre}</h3>
+                <p class="service-desc">${servicio.descripcion}</p>
+
+                <ul class="service-features-list">
+                  ${(servicio.entregables || []).slice(0, 2).map(item => `
+                    <li class="service-feature-item">
+                      <span class="bullet">✓</span>
+                      <span>${item}</span>
+                    </li>
+                  `).join('')}
+                </ul>
               </div>
             </div>
 
-            <div class="tarjeta-footer">
-              <a href="${linkWsp}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+            <div class="service-footer">
+              <button 
+                class="btn-card-quote ${estaEnCotizador ? 'added' : ''}" 
+                onclick="toggleCotizador('${servicio.id}')"
+              >
+                ${estaEnCotizador ? '✓ En Cotizador' : '➕ Cotizar'}
+              </button>
+
+              <a href="${linkWsp}" target="_blank" rel="noopener noreferrer" class="btn-card-wsp">
                 💬 WhatsApp
               </a>
-              <button class="btn-detalle" onclick="alert('Servicio: ${servicio.nombre}\\nPrecio: ${precioFormateado}\\n\\nDescripción: ${servicio.descripcion}')">
-                ℹ️ Info
-              </button>
             </div>
           </article>
         `;
       }).join('');
     }
 
-    // 5. FUNCIÓN PARA FILTRAR SERVICIOS EN TIEMPO REAL
+    // FILTROS
     function filtrarServicios() {
-      const query = document.getElementById('input-busqueda').value.toLowerCase().trim();
-      const filtrados = listaServicios.filter(s => 
-        (s.nombre && s.nombre.toLowerCase().includes(query)) ||
-        (s.descripcion && s.descripcion.toLowerCase().includes(query))
-      );
-      renderizarTarjetas(filtrados);
+      const termino = document.getElementById('buscador-input').value.toLowerCase().trim();
+
+      serviciosVisibles = serviciosData.filter(s => {
+        const coincideCat = (categoriaSeleccionada === 'todas') || (s.categoria === categoriaSeleccionada);
+        const coincideTexto = s.nombre.toLowerCase().includes(termino) || s.descripcion.toLowerCase().includes(termino);
+        return coincideCat && coincideTexto;
+      });
+
+      renderizarGrid(serviciosVisibles);
     }
 
-    // 6. FUNCIÓN FETCH PARA CONECTAR GOOGLE APPS SCRIPT
-    async function conectarAppsScript() {
-      const inputUrl = document.getElementById('input-apps-script');
-      const url = inputUrl.value.trim();
-      const contenedor = document.getElementById('catalogo-servicios');
-      const badgeEstado = document.getElementById('estado-datos');
-      const infoSync = document.getElementById('info-sync');
+    function filtrarCategoria(categoria, boton) {
+      categoriaSeleccionada = categoria;
+      
+      document.querySelectorAll('#categorias-filtro .pill-btn').forEach(btn => btn.classList.remove('active'));
+      if (boton) boton.classList.add('active');
+
+      filtrarServicios();
+    }
+
+    // COTIZADOR
+    function toggleCotizador(id) {
+      const servicio = serviciosData.find(s => s.id === id);
+      if (!servicio) return;
+
+      const index = cotizadorItems.findIndex(item => item.id === id);
+      if (index >= 0) {
+        cotizadorItems.splice(index, 1);
+      } else {
+        cotizadorItems.push(servicio);
+      }
+
+      actualizarCotizadorUI();
+      renderizarGrid(serviciosVisibles);
+    }
+
+    function eliminarDelCotizador(id) {
+      cotizadorItems = cotizadorItems.filter(item => item.id !== id);
+      actualizarCotizadorUI();
+      renderizarGrid(serviciosVisibles);
+    }
+
+    function vaciarCotizador() {
+      cotizadorItems = [];
+      actualizarCotizadorUI();
+      renderizarGrid(serviciosVisibles);
+    }
+
+    function actualizarCotizadorUI() {
+      const contador = document.getElementById('cart-counter');
+      const lista = document.getElementById('drawer-lista');
+      const totalTxt = document.getElementById('drawer-total');
+      const wspBtn = document.getElementById('drawer-enviar-wsp');
+
+      if (contador) contador.textContent = cotizadorItems.length;
+
+      const total = cotizadorItems.reduce((acc, curr) => acc + curr.precio, 0);
+      if (totalTxt) totalTxt.textContent = formatearPrecio(total);
+
+      if (cotizadorItems.length === 0) {
+        lista.innerHTML = `
+          <div style="text-align: center; padding: 2rem 0; color: var(--text-dim);">
+            <p style="font-size: 0.9rem;">El cotizador está vacío.</p>
+            <p style="font-size: 0.8rem; margin-top: 0.25rem;">Haz clic en "Cotizar" en cualquier servicio para sumarlo.</p>
+          </div>
+        `;
+      } else {
+        lista.innerHTML = cotizadorItems.map(item => `
+          <div class="drawer-item">
+            <div>
+              <div class="drawer-item-title">${item.nombre}</div>
+              <div class="drawer-item-price">${formatearPrecio(item.precio)}</div>
+            </div>
+            <button class="drawer-item-del" onclick="eliminarDelCotizador('${item.id}')" title="Eliminar">✕</button>
+          </div>
+        `).join('');
+      }
+
+      // Mensaje de WhatsApp con el número +5492984926445
+      const detalle = cotizadorItems.map(i => `• ${i.nombre}: ${formatearPrecio(i.precio)}`).join('\n');
+      const mensaje = `Hola Eliana! Armé un presupuesto en tu catálogo digital:\n\n${detalle}\n\n*Total Estimado: ${formatearPrecio(total)}*\n\n¿Podemos coordinar una reunión?`;
+      if (wspBtn) wspBtn.href = `https://wa.me/${TELEFONO_WHATSAPP}?text=` + encodeURIComponent(mensaje);
+    }
+
+    function toggleDrawer(abrir) {
+      const drawer = document.getElementById('drawer-cotizador');
+      if (!drawer) return;
+      if (abrir) {
+        drawer.classList.add('active');
+      } else {
+        drawer.classList.remove('active');
+      }
+    }
+
+    // MODAL DE DETALLE
+    function abrirModalDetalle(id) {
+      const servicio = serviciosData.find(s => s.id === id);
+      if (!servicio) return;
+
+      document.getElementById('modal-img').src = servicio.imagen;
+      document.getElementById('modal-cat').textContent = servicio.categoria || 'Marketing';
+      document.getElementById('modal-titulo').textContent = servicio.nombre;
+      document.getElementById('modal-precio').textContent = formatearPrecio(servicio.precio);
+      document.getElementById('modal-desc').textContent = servicio.descripcion;
+
+      const entregablesUl = document.getElementById('modal-entregables');
+      entregablesUl.innerHTML = (servicio.entregables || [
+        "Atención personalizada",
+        "Garantía de calidad profesional",
+        "Seguimiento de métricas"
+      ]).map(ent => `
+        <li style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="color: var(--primary); font-weight: bold;">✓</span>
+          <span>${ent}</span>
+        </li>
+      `).join('');
+
+      document.getElementById('modal-wsp-btn').href = construirEnlaceWsp(servicio.nombre, servicio.precio);
+      
+      const addBtn = document.getElementById('modal-add-btn');
+      const yaEsta = cotizadorItems.some(i => i.id === servicio.id);
+      addBtn.textContent = yaEsta ? '✓ En Cotizador' : '➕ Agregar al Cotizador';
+      addBtn.onclick = () => {
+        toggleCotizador(servicio.id);
+        cerrarModalDetalle();
+      };
+
+      document.getElementById('modal-detalle').classList.add('active');
+    }
+
+    function cerrarModalDetalle() {
+      document.getElementById('modal-detalle').classList.remove('active');
+    }
+
+    // CONECTAR URL PERSONALIZADA (ESPACIO DISPONIBLE)
+    async function conectarUrlPersonalizada() {
+      const input = document.getElementById('input-url-script');
+      const url = input ? input.value.trim() : '';
 
       if (!url) {
-        alert('Por favor ingresa la URL de tu aplicación web de Apps Script.');
+        alert("Por favor ingresa una URL válida de Google Apps Script.");
         return;
       }
 
-      contenedor.innerHTML = `
-        <div class="loading-state">
-          <div class="spinner"></div>
-          <p>Conectando con Google Sheets y Apps Script...</p>
-        </div>
-      `;
-
       try {
         const respuesta = await fetch(url);
-        if (!respuesta.ok) {
-          throw new Error('Error al conectar con la URL: Código ' + respuesta.status);
-        }
-
+        if (!respuesta.ok) throw new Error("Error en la respuesta del servidor");
         const datos = await respuesta.json();
-        
-        // Manejar estructura de respuesta
-        const lista = Array.isArray(datos) ? datos : (datos.data || datos.servicios || []);
 
-        if (!Array.isArray(lista) || lista.length === 0) {
-          throw new Error('La respuesta de Apps Script no contiene una lista de servicios válida.');
+        if (Array.isArray(datos) && datos.length > 0) {
+          // Adaptar datos recibidos al formato del catálogo
+          serviciosData = datos.map((item, index) => ({
+            id: 'serv-api-' + index,
+            nombre: item.Nombre || item.nombre || 'Servicio',
+            precio: Number(item.Precio || item.precio || 0),
+            descripcion: item.Descripcion || item.descripcion || '',
+            imagen: item.Imagen || item.imagen || 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+            categoria: item.Categoria || item.categoria || 'Marketing',
+            entregables: [
+              "Servicio personalizado según requerimientos",
+              "Soporte directo vía WhatsApp",
+              "Optimización de resultados"
+            ]
+          }));
+
+          filtrarServicios();
+          alert("¡Servicios actualizados correctamente desde tu URL!");
+        } else {
+          alert("La URL respondió pero no contiene un listado de servicios válido.");
         }
-
-        // Mapear los datos de las columnas A, B, C, D
-        listaServicios = lista.map(item => ({
-          nombre: item.Nombre || item.nombre || 'Servicio sin nombre',
-          precio: Number(item.Precio || item.precio) || 0,
-          descripcion: item.Descripcion || item.descripcion || '',
-          imagen: item.Imagen || item.imagen || 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800'
-        }));
-
-        badgeEstado.textContent = `Base de Datos: Conectada a Google Sheets (${listaServicios.length} servicios)`;
-        infoSync.textContent = 'Modo: Sincronizado en vivo';
-        infoSync.style.color = '#10b981';
-
-        renderizarTarjetas(listaServicios);
-        alert('¡Excelente! Se cargaron exitosamente ' + listaServicios.length + ' servicios desde tu Google Sheet.');
-
-      } catch (error) {
-        console.error('Error al sincronizar:', error);
-        alert('No se pudo conectar: ' + error.message + '\\n\\nRevisa que en Apps Script la implementación tenga acceso "Cualquiera" (Anyone).');
-        listaServicios = [...SERVICIOS_DEFAULT];
-        renderizarTarjetas(listaServicios);
+      } catch (err) {
+        console.error(err);
+        alert("No se pudo conectar con la URL ingresada. Verifica que esté desplegada como aplicación web pública.");
       }
     }
 
-    // 7. FUNCIONES PARA EL MODAL DE AYUDA Y DESCARGA
-    function abrirModalAyuda() {
-      document.getElementById('modal-ayuda').classList.add('active');
-    }
-
-    function cerrarModalAyuda(e) {
-      document.getElementById('modal-ayuda').classList.remove('active');
-    }
-
-    function copiarCodigoAppsScript() {
-      const codigo = document.getElementById('bloque-codigo').innerText;
-      navigator.clipboard.writeText(codigo).then(() => {
-        alert('¡Código de Apps Script copiado al portapapeles!');
-      });
-    }
-
-    function descargarIndex() {
-      const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'index.html';
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    // Inicializar la vista cuando cargue la página
+    // INICIALIZACIÓN
     document.addEventListener('DOMContentLoaded', () => {
-      renderizarTarjetas(listaServicios);
+      // Si se definió URL fija en el código, cargarla automáticamente
+      if (URL_APPS_SCRIPT_CONFIGURADA) {
+        const input = document.getElementById('input-url-script');
+        if (input) input.value = URL_APPS_SCRIPT_CONFIGURADA;
+        conectarUrlPersonalizada();
+      } else {
+        renderizarGrid(serviciosData);
+      }
+      actualizarCotizadorUI();
     });
   </script>
-
-
-</body></html>
+</body>
+</html>
